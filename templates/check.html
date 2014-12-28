@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Netfood 网吧点餐系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/netfood/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/netfood/css/jquery.ui.core.min.css" rel="stylesheet">
+    <!-- Custom CSS for the 'Thumbnail Gallery' Template -->
+    <link href="/static/netfood/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrap">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-12 col-md-12 header">
+                    <img src="/static/netfood/images/logo.png">
+                </div>
+                <div class="col-lg-12 col-md-12 ct">
+                    <table class="table">
+                        <tr class="thead">
+                            <th>我的饭盒</th>
+                            <th>单价</th>
+                            <th>份数</th>
+                            <th>总计</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        {% for i in cart.items.all %}
+                        <tr data = "{{ i.id }}">
+                            <td>{{ i.menuitem.name }}</td>
+                            <td>¥ {{ i.menuitem.price|floatformat:"2" }}</td>
+                            <td class="quantity">
+                                <a href="javascript:void(0)" class="minus">-</a>
+                                <input type="text" value="{{ i.quantity }}"/>
+                                <a href="javascript:void(0)" class="plus">+</a>
+                            </td>
+                            <td class="price">¥ {{ i.price|floatformat:"2" }}</td>
+                            <td><a href="javascript:void(0)" class="delete" data = "{{ i.id }}"><span>X</span></a></td>
+                        </tr>
+                        {% endfor %}
+                        <tr class="tfoot">
+                            <td colspan = "5">
+                                {{ form.seat.errors }}
+                                <form class="form-inline" role="form" method="post" action ="/order/submit/">
+                                {% csrf_token %}    
+                                      <div class="form-group">
+                                        <label>我在</label>
+                                        <input type="text" class="form-control" id="seat" name="seat" placeholder="座位" value = {{ seat }}>
+                                        <label>号</label>
+                                      </div>
+                                      <div class="form-group">
+                                        <input type="text" class="form-control" id="markup" name="markup" placeholder="备注：饮料不加冰等等...">
+                                      </div>
+                                      <div class="form-group">
+                                        <input type="hidden" class="form-control" name ="cart" value="{{ cart.id }}">
+                                      </div>
+                                      <div class="form-group info">
+                                        <label>共 <span class="count">{{ cart.count }}</span> 份</label>
+                                        <label>应付金额：     </label>
+                                        <label class="total">¥ {{ cart.total|floatformat:"2" }}</label>
+                                      </div>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                    {% for b in banners %}
+                    <div class="col-lg-12 col-md-12 banner" style="padding:0">
+                        <img src = "{{ b.thumb_big.url }}" />
+                    </div>
+                    {% endfor %}
+                    <div class="col-lg-12 col-md-12 btn">
+                        <a href="/" style="float:left;">继续点单</a>
+                        <a href="javascript:void(0)" style="float:right;" class="submit">确认订单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+             <p class="copyright">Copyright &copy; 2014 杭州拓边网络科技有限公司  All Rights Reserved</p>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    <script src="/static/netfood/js/jquery.min.js"></script>
+    <script src="/static/netfood/js/bootstrap.min.js"></script>
+    <script src="/static/netfood/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/static/netfood/js/nf.js"></script>
+    <script type="text/javascript">
+        $(".tab").tabs();
+    </script>
+</body>
+<html>

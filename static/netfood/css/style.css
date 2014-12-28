@@ -1,0 +1,385 @@
+*{
+	outline: none!important;
+}
+
+body,html {
+	/* 50px is the height of the navbar - change this if the navbarn height changes */
+	background: #fff url("/static/netfood/images/background.jpg") repeat-y fixed center;
+	height: 100%;
+}
+label{
+	font-weight: normal;
+}
+.wrap{
+	min-height:100%;
+	margin-bottom:-60px;
+	padding-top: 60px;
+}
+.wrap:after{
+	content:"";
+	display: block;
+}
+
+.container{
+	width: 1400px;
+}
+
+.footer, .wrap:after{
+	height:60px;
+}
+.footer{
+	background: transparent;
+	width: 100%;
+}
+.copyright{
+	line-height: 100px;
+	color:#fff;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.row{
+	border-radius: 5px;
+	background-color:#fff;
+	z-index: 99;
+	-moz-box-shadow: 2px 2px 1px 1px #777;
+	-webkit-box-shadow: 2px 2px 1px 1px #777;
+}
+
+.header{
+	background-color: #f26432;
+	color: #fff;
+	padding: 15px 30px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+.header *{
+	float: left;
+}
+.header h2{
+	line-height:45px;
+	margin: 0;
+	margin-left: 30px;
+}
+
+.tab ul{
+	overflow: hidden;
+	margin: 0;
+	padding:0;
+}
+.tab ul>li{
+	list-style: none;
+	float: left;
+	margin: 0;
+	padding:0;
+}
+.tab ul>li>a{
+	display: inline-block;
+	padding: 20px 25px 20px 25px;
+	color:#000;
+}
+.tab ul>li>a:hover{
+	text-decoration: none;
+	color:#f26432;
+}
+.tab ul>li[aria-selected = "true"]>a{
+	text-decoration: none;
+	color:#f26432;
+}
+
+
+.list{
+	margin-bottom: 20px;
+	padding-left: 0;
+	padding-right:0;
+}
+
+.thumb {
+	padding-top: 20px;
+	position: relative;
+	border:1px solid #f5f5f5;
+}
+.thumbnail{
+	border: none;
+	max-height: 200px;
+}
+.thumbnail img{
+	height: 200px;
+}
+.thumb div{
+	float: left;
+	vertical-align: bottom;
+}
+.thumb div p{
+	padding: 0px 5px;
+}
+.thumb .btn{
+	float: right;
+}
+.thumb .btn a{
+	display: block;
+	padding: 3px 10px;
+	color:#f26432;
+	border: 1px solid #f26432;
+	border-radius: 5px;
+	margin-top: 10px;
+	float: right;
+}
+.thumb .btn a:hover{
+	text-decoration: none;
+}
+
+.sidebar{
+	padding-left: 0;
+}
+.widget{
+	background-color: #f5f5f5;
+}
+
+aside{
+	padding-left: 2px;
+	padding-right: 2px;
+}
+aside .title{
+	text-align: center;
+	padding: 5px;
+	margin-top:60px;
+	background-color: #f5f5f5;
+}
+
+aside .rank{
+	background: #f5f5f5;
+	padding-left:3px;
+	padding-right: 3px;
+	padding-bottom: 20px;
+}
+aside .rank ul{
+	overflow: hidden;
+	width: 100%;
+	padding:0;
+	margin: 0;
+}
+aside .rank ul li{
+	background: #fff;
+	list-style: none;
+	width: 100%;
+	margin-bottom: 3px;
+	padding:10px 0;
+}
+aside .rank ul li *{
+	display: inline-block;
+	text-align: center;
+}
+aside .rank ul li .order{
+	width: 10%;
+
+}
+aside .rank ul li .name{
+	width: 40%;
+}
+aside .rank ul li .price{
+	width: 20%;
+}
+aside .rank ul li a{
+	width: 25%;
+}
+aside .rank ul li a>span{
+	color:#f26432;
+}
+
+.widget-2{
+	padding: 20px 3px 0px 3px;
+	margin-top: 10px;
+	background-color: #f5f5f5;
+}
+.widget-2 .cart{
+	margin-top:10px;
+	min-height: 200px;
+	background-color: #fff;
+	padding-left:3px;
+	padding-right:3px;
+	border-top: 3px solid #f26432;
+}
+
+.cart .title{
+	text-align: left;
+	background-color: #fff;
+	border-bottom: 1px solid #f5f5f5;
+	margin: 0;
+}
+.items ul{
+	overflow: hidden;
+	padding: 0;
+	margin:0;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.items ul >li {
+	list-style: none;
+	padding: 10px 0px 10px 10px;
+	overflow: hidden;
+}
+.items ul>li>div{
+	display: block;
+	float: left;
+	text-align: left;
+}
+
+.items ul>li .name{
+	width: 140px;
+}
+.items ul>li .quantity{
+	width: 105px;
+}
+.items ul>li .price{
+	width: 60px;
+}
+.items ul>li .quantity>a{
+	display: block;
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin: 0px 5px;
+	border: 1px solid #eee;
+	line-height: 18px;
+	cursor: pointer;
+	text-align: center;
+	color:#000;
+	text-decoration: none;
+}
+.items ul>li .quantity>a:hover{
+	background-color: #333;
+	color: #fff;
+}
+.items ul>li input{
+	display: block;
+	float: left;
+	width: 25px;
+	height: 20px;
+	text-align: center;
+	margin: 0px;
+}
+.items ul>li .price{
+	width: 20%;
+}
+
+.widget-3{
+	background-color: #f26432;
+	padding: 7px 10px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+.check span{
+	display: inline-block;
+	color: #fff;
+	padding-left: 10px; 
+}
+
+.check span:first-child{
+	padding-left: 0px; 
+}
+
+.check span a{
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 5px 10px;
+	color:#f26432;
+	margin-left: 10px;
+}
+
+
+/*-------------cart table------------*/
+.ct{
+	padding-left: 100px;
+	padding-right: 100px;
+}
+.ct .table{
+	border: 1px solid #eee;
+	margin-top: 50px;
+}
+.ct table .thead>th{
+	padding: 10px 40px;
+	background-color: #f5f5f5;
+}
+.ct table tr>td{
+	padding: 40px;
+
+}
+
+.ct .quantity>a{
+	display: inline-block;
+	text-align: center;
+	width: 25px;
+	height: 25px;
+	border: 1px solid #eee;
+	line-height: 23px;
+	cursor: pointer;
+	color: #000;
+	text-decoration: none;
+}
+.ct .quantity>a:hover{
+	background-color: #333;
+	color: #fff
+}
+.ct .quantity>input{
+	height: 25px;
+	width: 30px;
+	display: inline-block;
+	text-align: center;
+}
+
+.ct .delete{
+	color:#000;
+}
+
+.ct .delete:hover{
+	text-decoration: none;
+}
+
+.ct table .tfoot>td{
+	background-color: #f5f5f5;
+}
+form #seat{
+	width: 75px;
+	text-align: center;
+}
+form #markup{
+	margin-left: 50px;
+	width: 300px;
+}
+form .info{
+	float: right;
+}
+form .info label{
+	margin-right: 40px;
+	line-height: 30px;
+}
+form .info label.total{
+	font-size: 1.5em;
+	color:#f26432;
+}
+.errorlist > li{
+	list-style: none;
+	color:#f26432;
+}
+
+.ct .btn{
+	margin: 40px auto;
+}
+
+.ct .btn>a{
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+	color: #fff;
+	background-color: #f26432;
+	padding: 10px 0px;
+}
+.ct .btn>a:hover{
+	text-decoration: none;
+}
+
+.banner{
+	margin-top:10px;
+}
+

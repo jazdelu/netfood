@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Netfood 网吧点餐系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/netfood/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/static/netfood/css/jquery.ui.core.min.css" rel="stylesheet">
+    <!-- Custom CSS for the 'Thumbnail Gallery' Template -->
+    <link href="/static/netfood/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="wrap">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12 header">
+            	<img src="/static/netfood/images/logo.png">
+            </div>
+
+            <div class="col-lg-9 col-md-9 main">
+
+	            <div class="col-lg-12 tab">
+	            	<ul>
+	            		<li>
+	            			<a href="#tab-1">特别推荐</a>
+	            		</li>
+	            		{% for c in categories %}
+	            		<li>
+	            			<a href="{{ c.tab_link }}">{{ c.name }}</a>
+	            		</li>
+	            		{% endfor %}
+	            	</ul>
+	            	<div class="col-lg-12 list" id = "tab-1">
+	            		{% for i in items %}
+	            		{% if i.recommend %}
+			            <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+			                <a class="thumbnail" href="#">
+			                    <img class="img-responsive" src="{{ i.get_thumb }}">
+			                </a>
+			                <div class="text">
+			                	<p>{{ i.name }}</p>
+			                	<p>¥ {{ i.price|floatformat:"2" }}</p>
+			                </div>
+			                <div class="btn">
+			                	<a href="javascript:void(0)" data="{{ i.id }}" >加入饭盒</a>
+			                </div>
+			            </div>
+			            {% endif %}
+	            		{% endfor %}
+	            	</div>
+	            	{% for c in categories %}
+		            <div class="col-lg-12 list" id = "{{ c.tab_id }}">
+		            	{% for i in c.items.all %}
+			            <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+			                <a class="thumbnail" href="#">
+			                    <img class="img-responsive" src="{{ i.get_thumb }}">
+			                </a>
+			                <div class="text">
+			                	<p>{{ i.name }}</p>
+			                	<p>¥ {{ i.price }}</p>
+			                </div>
+			                <div class="btn">
+			                	<a href="javascript:void(0)" data="{{ i.id }}">加入饭盒</a>
+			                </div>
+			            </div>
+			            {% endfor %}
+		            </div>
+		            {% endfor %}
+	            </div>
+            </div>
+            <div class="col-lg-3 sidebar">
+        		<aside>
+        			<div class="widget">
+	        			<div class="title">
+	        				<h4>热卖排行</h4>
+	        			</div>
+	        			<div class="rank">
+	        				<ul>
+	        					{% for i in items_rank %}
+	        					<li>
+	        						<label class="order">{{ forloop.counter }}.</label>
+	        						<span class="name">{{ i.name }}</span>
+	        						<label class="price">¥{{ i.price|floatformat:"2" }}</label>
+	        						<a href="javascript:void(0)" data = "{{ i.id }}"><span>来一份</span></a>
+	        					</li>  
+	        					{% endfor %}   						        						        		
+	        				</ul>
+	        			</div>
+        			</div>
+        			<div class="widget-2">
+        				<div class="cart" id="{{ cart.id }}">
+	        				<div class="title">
+	        					<span>我的饭盒</span>
+	        					<a href="/cart/clear/{{ cart.id }}/"><span>[清空]</span></a>
+	        				</div>
+	        				<div class="items">
+	        					<ul>
+	        						{% for i in cart.items.all %}
+	        						<li data="{{ i.id }}">
+	        							<div class="name">{{ i.menuitem.name }}</div>
+	        							<div class="quantity">
+		        							<a href="javascript:void(0)" class="minus">-</a>
+		        							<input type="text" value="{{ i.quantity }}" readonly="readonly" />
+		        							<a href="javascript:void(0)" class="plus">+</a>
+	        							</div>
+	        							<div class="price">¥ {{ i.price|floatformat:"2" }}</div>
+	        						</li>
+	        						{% empty %}
+	        						<label>饭盒还是空的哦～</label>
+	        						{% endfor %}
+	        					</ul>
+	        				</div>
+        				</div>
+        			</div>
+        		</aside>
+    			<div class="widget-3">
+    				<div class="check">
+    					<span><img src="/static/netfood/images/cart.png" /></span>
+    					<span><label class="count">{{ cart.count }}</label> 件</span>
+    					<span>共  <label class="total">¥ {{ cart.total|floatformat:"2"}}</label>  元 </span>
+    					<span>
+    						<a href="/order/check/">结账></a>
+    					</span>
+    				</div>
+    			</div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+    </div>
+    <div class="footer">
+        <div class="container">
+             <p class="copyright">Copyright &copy; 2014 杭州拓边网络科技有限公司  All Rights Reserved</p>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    <script src="/static/netfood/js/jquery.min.js"></script>
+    <script src="/static/netfood/js/bootstrap.min.js"></script>
+	<script src="/static/netfood/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/static/netfood/js/nf.js"></script>
+	<script type="text/javascript">
+		$(".tab").tabs();
+	</script>
+
+</body>
+
+</html>
